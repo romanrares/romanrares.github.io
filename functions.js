@@ -10,10 +10,13 @@ function hide(id) {
 }
 
 function hideAllPages() {
-    hide("home");
-    hide("skills");
-    hide("projects");
-    hide("languages");
+    var pages = document.querySelectorAll(".page");
+    for(var i = 0; i < pages.length; i++) {
+        var page = pages[i];
+        var id =  hide(pages[i].id);
+        console.info("i = ", i, pages[i]);
+        hide(id);
+    }
 }
 
 function showHome() {
