@@ -11,17 +11,6 @@ function hide(id) {
     }
 }
 
-// var i;
-// var a = [
-//     document.getElementById("top-menu-bar").getElementsByTagName("li")
-// ];
-// for (i = 0; i < a.length; i++) {
-//     console.log(a[i]);
-// }
-
-
-
-
 function showHome() {
     hide("skills");
     hide("projects");
@@ -39,15 +28,15 @@ function showSkills() {
 }
 
 function showProjects() {
-    document.getElementById("skills").style.display = "none";
-    document.getElementById("languages").style.display = "none";
-    document.getElementById("home").style.display = "none";
+    hide("skills");
+    hide("languages");
+    hide("home");
     document.getElementById("projects").style.display = "";
 }
 
 function showLanguages() {
-    document.getElementById("projects").style.display = "none";
-    document.getElementById("skills").style.display = "none";
-    document.getElementById("home").style.display = "none";
+    hide("projects");
+    hide("skills");
+    hide("home");
     document.getElementById("languages").style.display = "";
 }
