@@ -1,11 +1,9 @@
 function hide(id) {
     var el = document.getElementById(id);
-    console.info("hide:" + id, el);
-
-    if(el) {
+    if (el) {
         el.style.display = "none";
     } else {
-        console.warn("pagina nu exista");
+        console.error("elementul nu exista");
     }
 }
 
@@ -13,29 +11,12 @@ function hideAllPages() {
     var pages = document.querySelectorAll(".page");
     for(var i = 0; i < pages.length; i++) {
         var page = pages[i];
-        var id =  hide(pages[i].id);
+        var id = page.id;
         hide(id);
     }
 }
 
-function showHome() {
+function showPage(pageId) {
     hideAllPages();
-    document.getElementById("home").style.display = "";
-}
-
-function showSkills() {
-    hideAllPages();
-    document.getElementById('skills').style.display = '';
-    // document.getElementById('skils-id').style.backgroundColor= '#fff';
-    // document.getElementById('skils-id').style.color= 'red';
-}
-
-function showProjects() {
-    hideAllPages();
-    document.getElementById("projects").style.display = "";
-}
-
-function showLanguages() {
-    hideAllPages();
-    document.getElementById("languages").style.display = "";
+    document.getElementById(pageId).style.display = "";
 }
