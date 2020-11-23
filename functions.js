@@ -38,20 +38,20 @@ initMenu();
 
 showPage(activePage);
 
-var allSkills = [
-    { name: "HTML", endorsements: 15 },
-    { name: "CSS", endorsements: 5 },
-    { name: "JS", endorsements: 21 }
-];
 // todo afisati sortat dupa nr de endorsements (functia sort)
 // adauaga if in showSkills, daca exista skills.... altfel...
 function showSkills(skills) {
-        var skillsLi = skills.map(function (skill) {
-            var endorsements = ` <span>&middot; ${skill.endorsements}</span>`
-            return "<li>" + skill.name + endorsements + "</li>";
-        });
-    
+    var skillsLi = skills.map(function (skill) {
+        var endorsements = ` <span>&middot; ${skill.endorsements}</span>`
+        return "<li>" + skill.name + endorsements + "</li>";
+    });
+
     var ul = document.querySelector("#skills ul");
     ul.innerHTML = skillsLi.join("");
 }
-showSkills(allSkills);
+
+fetch("data/skills.json").then(function (r) {
+    return r.json();
+}).then(function (allSkills) {
+    showSkills(allSkills);
+});
