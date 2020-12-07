@@ -15,7 +15,6 @@ function hidePreviousPage() {
     link.classList.remove("active");
 }
 
-
 function showPage(pageId) {
     hidePreviousPage();
     document.getElementById(pageId).style.display = "";
@@ -27,25 +26,25 @@ function showPage(pageId) {
 function initMenu() {
     document.addEventListener("click", function (e) {
         var link = e.target;
-        if (e.target.matches("#top-menu-bar a")) {
+        if (link.matches("#top-menu-bar a")) {
             var id = link.getAttribute("data-page");
             showPage(id);
         }
-    });
+    })
 }
 
 initMenu();
 
 showPage(activePage);
 
-// todo afisati sortat dupa nr de endorsements (functia sort)
-// adauaga if in showSkills, daca exista skills.... altfel...
 function showSkills(skills) {
     var skillsLi = skills.map(function (skill) {
-        var endorsements = ` <span>&middot; ${skill.endorsements}</span>`
+        var endorsements = ` <span>&middot; ${skill.endorsements}</span>`;
         return "<li>" + skill.name + endorsements + "</li>";
     });
 
+    // TODO add "favorite" skill
+    // TODO sort by endorsements
     var ul = document.querySelector("#skills ul");
     ul.innerHTML = skillsLi.join("");
 }
