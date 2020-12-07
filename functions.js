@@ -47,16 +47,16 @@ function getHtmlSkills(skills) {
 }
 
 function showSkills(skills) {
-    var html = getHtmlSkills(skills);
-
-    // TODO add "favorite" skill
-    // TODO sort by endorsements
     var ul = document.querySelector("#skills ul");
-    ul.innerHTML = html;
+    ul.innerHTML = getHtmlSkills(skills);
 }
 
 fetch("data/skills.json").then(function (r) {
     return r.json();
 }).then(function (allSkills) {
+    allSkills.sort(function(s1, s2){
+        // return s2.endorsements - s1.endorsements;
+        return s1.name < s2.name ? -1 : 1;
+    });
     showSkills(allSkills);
 });
