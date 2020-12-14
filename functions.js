@@ -30,7 +30,7 @@ function initMenu() {
             const id = link.getAttribute("data-page");
             showPage(id);
         }
-    })
+    });
 }
 
 function getHtmlSkills(skills) {
@@ -51,9 +51,60 @@ initMenu();
 showPage(activePage);
 
 fetch("data/skills.json")
-.then(r => r.json())
-.then((allSkills) => {
-    allSkills.sort((s1, s2) => s2.endorsements - s1.endorsements
-    );
-    showSkills(allSkills);
-});
+    .then(r => r.json())
+    .then((allSkills) => {
+        allSkills.sort((s1, s2) => s2.endorsements - s1.endorsements);
+        showSkills(allSkills);
+    });
+
+
+
+// level 10: ex.2
+function collectFirstName(employees) {
+    if (!employees) {
+        console.info("Nu ai dat datele corect");
+    }
+    var firstName = employees.map(employee => employee.firstName);
+    return firstName;
+}
+
+/* level 10: ex.3 */
+function calculateAverageSalary(employees) {
+    let sum = 0;
+    employees.forEach(employee => sum += parseFloat(employee.salary));
+    return (sum / employees.length).toFixed(2);
+}
+
+const average = calculateAverageSalary(employees);
+console.log("average", average);
+
+/* level 10: ex.4 */
+function splitEmployees() {
+
+    // <varianta 1>
+    let maleArray = [];
+    let femaleArray = [];
+
+    employees.filter(employee => 
+        employee.gender == "Male" ? maleArray.push(employee.firstName)
+            :
+            femaleArray.push(employee.firstName)
+    );;
+
+    // </varianta 1> 
+
+
+    // <varianta 2>
+/*
+    const maleArray = employees.filter(employee => employee.gender == "Male");
+    const femaleArray = employees.filter(employee => employee.gender == "Female");
+*/
+
+    // </varianta 2>
+
+
+    return [maleArray, femaleArray];
+
+}
+splitEmployees(employees);
+
