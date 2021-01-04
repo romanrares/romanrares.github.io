@@ -42,9 +42,7 @@
         // 1. Filter the list of inventors for those who were born in the 1500's
 
         function filterOne(inventors) {
-            const oMieCinciSute = [];
-            const map = inventors.filter(i => { i.year >= 1500 && i.year <= 1599 ? oMieCinciSute.push(i.first) : ""; });
-            return oMieCinciSute;
+            return inventors.filter(i =>  i.year >= 1500 && i.year < 1600 );
         }
         filterOne(inventors);
 
@@ -98,7 +96,7 @@
         liveEachInventor(inventors);
 
 //reduce    (/tenor swear)
-//+++++++++++++++++++++++ALTA+++++++SOLUTIE++++++++++++CU++++++++++REDUCE+++++++++++++++++++++++++++++++++++++++++++++++++++++//
+//+++++++++++++++++++++++OTHER+++++++SOLUTION+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
         function getInventorsLiveTogetherInArray(inventors) {
             const inventorsArray = [];
