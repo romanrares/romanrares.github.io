@@ -60,3 +60,62 @@ function transformToObject(employees) {
 
 transformToObject(employees);
 
+
+// level 15 ex.15
+
+function isOlderThan(inventors, age) {
+    return inventors.some(inventor => (inventor.passed - inventor.year) >= age);
+}
+isOlderThan(inventors, 19);
+//---------------------------------------------------------------------------------
+
+// level 15 ex.16
+function isEveryoneOlderThan(inventors, age) {
+    return inventors.every(inventor => (inventor.passed - inventor.year) >= age);
+}
+isEveryoneOlderThan(inventors, 19);
+//---------------------------------------------------------------------------------
+
+// level 15 ex.17
+function findCommentById(comments, commentId) {
+    return comm = comments.find(comment => commentId === comment.id).text;
+}
+findCommentById(comments, 823423);
+
+//---------------------------------------------------------------------------------
+
+// level 15 ex.18
+function deleteCommentWithId(comments, commentId) {
+    const indexForDelete = comments.findIndex(function (comment) {
+        return commentId === comment.id
+    });
+    console.log("indexul este: ", indexForDelete); // should return: 1
+    comments.splice(indexForDelete, 1);
+    return comments;
+}
+deleteCommentWithId(comments, 823423);
+//---------------------------------------------------------------------------------
+
+// level 15 ex.19
+const datas = ["car", "car", "truck", "truck", "bike", "walk", "car", "van", "bike", "walk", "car", "van", "car", "truck"];
+
+function countWords(data) {
+    var obj = {};
+    data.forEach(d => obj[d] ? obj[d] = obj[d] + 1 : obj[d] = 1);
+    return obj;
+}
+
+test(datas);
+
+//-------------------------
+// level 15 ex.19 --- reduce version  -------- FAILED (Cannot read property 'car' of undefined)
+const arrays = ["car", "car", "truck", "truck", "bike", "walk", "car", "van", "bike", "walk", "car", "van", "car", "truck"];
+
+function countWithReduce(arrays) {
+   return arrays.reduce( (s1, s2) => {
+        !s1[s2] ? s1[s2] = 1 : s1[s2]++;
+        return s1;
+    }, {});
+
+}
+countWithReduce(arrays);
